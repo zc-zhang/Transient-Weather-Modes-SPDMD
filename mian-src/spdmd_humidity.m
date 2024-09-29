@@ -3,7 +3,7 @@
 % a trial for spariaty-promoting DMD (spdDMM) on humidity ratio data 'Hdata.mat'
 
 % Modified by ZC
-% Referece: M. Jovanovic et al, Sparsity-promotoing dynami mode decomposition, Physics of Fluids, 2014
+% Referece: M. Jovanovic et al, Sparsity-promotoing dynamic mode decomposition, Physics of Fluids, 2014
 
 % Extract V0 and V1 from `Hdata.mat'
 V0 = Hdata(:,1:41-1);
