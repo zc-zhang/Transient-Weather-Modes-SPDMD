@@ -1,3 +1,8 @@
-% Pdata     % pressure data
-% Tdata     % temperature data
-% Hdata     % specific humidity or humidity ratio data
+% scaledata240805b.mat   % original SCALE simulation data
+% Pdata.mat     % pressure data
+% Tdata.mat     % temperature data
+% Hdata.mat     % specific humidity or humidity ratio data
+% Vfull.mat or Vfull09.mat   % magnitude of vorticity data (scalar field) by 'vorflow.m' with size 3880*121
+
+% datahandle0805.m   % handle data (i.e., generating scaledata240805b.mat)
+% vorflow.m          % load('scaledata240805b.mat') to get 'Vfull09.mat' data
