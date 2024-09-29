@@ -5,6 +5,8 @@
 % Modified by ZC
 % Referece: M. Jovanovic et al, Sparsity-promotoing dynamic mode decomposition, Physics of Fluids, 2014
 
+
+% First load datasets: 'Hdata.mat' data and 'scaledata240805b.mat'
 % Extract V0 and V1 from `Hdata.mat'
 V0 = Hdata(:,1:41-1);
 V1 = Hdata(:,2:41);
