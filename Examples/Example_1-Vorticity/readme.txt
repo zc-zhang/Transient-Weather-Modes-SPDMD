@@ -15,3 +15,14 @@ Transient Behavior: If the system exhibits significant oscillatory transients, t
 
 Use: Reflects the phase relationship and can show how different modes synchronize or interact.
 Transient Behavior: Phase information is crucial in understanding the timing of oscillations, especially in coupled or interacting systems.
+
+% load 'scalehandle240805b.mat'
+% run 'vorflow.m' to get magnitude of vorticity (scale filed) data, i.e., 'Vfull.mat' with size 3880*121
+
+% load 'Vfull.mat'
+% run 'spdmd_vorscale.m' to perform sparsity-promoting dynamic mode decomposition (spDMD) proposed by MR Jovanovic, Physics of Fluids'2014.
+
+% Plot figures:
+% run 'plot_spdmd_vor.m'
+% run 'plot_STModes_spdmd.m' 
+ 
