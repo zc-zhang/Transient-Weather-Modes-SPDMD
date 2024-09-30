@@ -1,15 +1,17 @@
 % spdmd_humidity.m     
 
 % a trial for spariaty-promoting DMD (spdDMM) on humidity ratio data 'Hdata.mat'
+% Hdata has 97*40=3880 girds and 121 snapshots (time steps), i.e., 3880*121 data matrix  
 
 % Modified by ZC
 % Referece: M. Jovanovic et al, Sparsity-promotoing dynamic mode decomposition, Physics of Fluids, 2014
 
-
+5
 % First load datasets: 'Hdata.mat' data and 'scaledata240805b.mat'
-% Extract V0 and V1 from `Hdata.mat'
-V0 = Hdata(:,1:41-1);
-V1 = Hdata(:,2:41);
+% Extract V0 and V1 from `Hdata.mat' with size 3880*121
+% We now only use the 51 snasphots (rather than 121)
+V0 = Hdata(:,1:51-1);
+V1 = Hdata(:,2:51);
 [U,S,V] = svd(V0, 'econ');
 % matrix Vstar
 Vstar = V';
