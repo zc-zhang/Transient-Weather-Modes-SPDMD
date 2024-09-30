@@ -1,15 +1,14 @@
 % Example code to compute and visualize vorticity flow from frameData
 % vortex dynamics of wind field using tmpV and tmpW data
+% load 'saledatahandle240805b.mat' has 121 sanpshots 
 % vorflow.m
-%===================
-% Example code to compute and visualize vorticity flow from frameData
-% vortex dynamics of wind field using tmpV and tmpW data
-% vorflow.m
+
 %===================
 fig = figure;
+% choose 43 snapshots from 121 time steps (tunable by user)
 Vorframes(43) = struct('cdata', [], 'colormap', []);
 
-figfile = 'vorticity_flow_240919.gif';
+figfile = 'vorticity_flow_2400930.gif';
 
   Vfull09=[];
 
@@ -143,4 +142,4 @@ save('Vfull09.mat', 'Vfull09');
 % V1 = Vfull(:, 2:end);
 
 % perform DMD 
-% use spdmd=vorscale.m
+% use spdmd_vorscale.m
