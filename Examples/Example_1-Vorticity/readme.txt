@@ -25,4 +25,7 @@ Transient Behavior: Phase information is crucial in understanding the timing of 
 % Plot figures:
 % run 'plot_spdmd_vor.m'
 % run 'plot_STModes_spdmd.m' 
+
+% when plotting it need the color-shadow
+% use 'shadedErrorBar.m' to show the shadow
  
