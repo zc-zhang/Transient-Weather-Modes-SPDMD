@@ -6,10 +6,11 @@
 % Modified by ZC
 % Referece: M. Jovanovic et al, Sparsity-promotoing dynamic mode decomposition, Physics of Fluids, 2014
 
-5
+
 % First load datasets: 'Hdata.mat' data and 'scaledata240805b.mat'
 % Extract V0 and V1 from `Hdata.mat' with size 3880*121
-% We now only use the 51 snasphots (rather than 121)
+% We now only use the 51 snapshots (rather than 121) 
+
 V0 = Hdata(:,1:51-1);
 V1 = Hdata(:,2:51);
 [U,S,V] = svd(V0, 'econ');
@@ -83,8 +84,8 @@ xdmd = (Pl')\(Pl\q);     % i.e.,
 % Answer 
 %gammaval=100;
 
-%% Set a set of gamma values (sparsity level)
-% % Define the parameters for generating gammaval values
+%% Set a set of gamma values (sparsity level) by user
+% % Define the parameters for generating gammaval values 
  gamma_grd = 300; % Number of gammaval values
 min_gamma = 1e-3; % Minimum gammaval
  max_gamma =50; % Maximum gammaval
@@ -200,7 +201,7 @@ for i = 1:length(gammaval)
     i
 end
 
-% Commented  Parts of Codes
+% Commented  Parts of Codes (rewrited in plot parts)
 %% sort amplitudes for xpol, xsp, xdmd
 % 
 % [Norm_xdmd,Index_xdmd] = sort(abs(xdmd),'descend');
