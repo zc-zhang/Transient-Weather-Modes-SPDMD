@@ -346,7 +346,7 @@ shadedErrorBar(t, mean_Humispdmd, std_Humispdmd, 'lineprops', {'-mo', 'LineWidth
 % Customize the plot with titles, labels, and a legend
 title('Comparison of Temporal Dynamics');
 xlabel('Time');
-ylabel('Amplitude');
+ylabel('Mean and Standard Deviation');
 
 grid on;
 legend({'Original', 'POD', 'DMD', 'Companion DMD', 'SPDMD'}, 'Location', 'Best');
