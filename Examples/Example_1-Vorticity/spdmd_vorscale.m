@@ -4,8 +4,8 @@
 % Extract V0 and V1 from Xfull
  % V0 = Vfull(:, 1:end-1);
  % V1 = Vfull(:, 2:end);
-V0 = Hdata(:,1:51-1);
-V1 = Hdata(:,2:51);
+V0 = Hdata(:,1:43-1);
+V1 = Hdata(:,2:43);
 [U,S,V] = svd(V0, 'econ');
 % matrix Vstar
 Vstar = V';
@@ -79,9 +79,9 @@ xdmd = (Pl')\(Pl\q);     % i.e.,
 
 %% Set a set of gamma values (sparsity level)
 % % Define the parameters for generating gammaval values
- gamma_grd = 300; % Number of gammaval values
+ gamma_grd = 100; % Number of gammaval values
 min_gamma = 1e-3; % Minimum gammaval
- max_gamma =50; % Maximum gammaval
+ max_gamma =350; % Maximum gammaval
 % Generate gammaval values using logspace
  gammaval = logspace(log10(min_gamma), log10(max_gamma), gamma_grd);
 
