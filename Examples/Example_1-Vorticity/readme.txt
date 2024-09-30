@@ -20,7 +20,21 @@ Transient Behavior: Phase information is crucial in understanding the timing of 
 % run 'vorflow.m' to get magnitude of vorticity (scale filed) data, i.e., 'Vfull.mat' with size 3880*121
 
 % load 'Vfull.mat'
-% run 'spdmd_vorscale.m' to perform sparsity-promoting dynamic mode decomposition (spDMD) proposed by MR Jovanovic, Physics of Fluids'2014.
+% perform sparsity-promoting dynamic mode decomposition (spDMD) proposed by MR Jovanovic, Physics of Fluids'2014.
+
+% run 'spdmd_vorscale.m'
+
+% obtain the eigenvalues 'Edmd' (resp., DEv_xdmd, DEv_xsp, DEv_xpol), 
+% amplitudes 'xdmd' (resp., xsp, xpol) 
+% spatial modes 'Phi' (resp., DMDModes_xdmd=Phi, DMDModes_xsp, DMD_xsp)
+
+% sparsity-inducing results check data set 'answer' that contains
+% 'gamma': sparsity weights 
+% 'Nz':   number of nonzero amplitudes 
+% 'Jsp': the cost of sparsity-promoting cost
+% 'Jpol': set the active (set) structure constraints ti improve the cost 'Jsp' by ADMM
+% 'xsp': sparsity-promoting DMD leads to sparse amplitudes versus DMD amplitudes 'xdmd' and modes 'Phi'
+% 'xpol': polish the results of sparse amplitudes by seeting the prioir knowledge of active structure constraints 
 
 % Plot figures:
 % run 'plot_spdmd_vor.m'
