@@ -1,14 +1,13 @@
 % test Residual DMD for SCALE data simulation;
 % %% Ref Residual-Dynamic-Mode-Decomposition/Examples_gallery_4/Cylinder_example
-% Ref: Another look at residual DMD
+% Reference: Colbrok, Another look at residual DMD in the regime of fewer snapshots than dictionary size, Physica D'24 
 %close all
 
-%load('Vfull.mat')
-% load('EnsVfull') with 
-% d=3880 (dimension), M1 =11 (Ensemble initial), M2-1=120 (snapshots)
+% load('Tdata') with 
+% d=3880 (dimension), M1=1 (ensemble 1); M2-1=120;
 
 
-%DATA =Vfull;
+
 DATA =Tdata;
 M1 = 1;                % the number of 
 M2 = size(DATA,2)-1;  % the number of snapshots 
