@@ -201,11 +201,13 @@ time_dynamics_Org = zeros(r, length(t));
 
 % Compute the time dynamics for each time step
 for iter = 1:length(t)
-       time_dynamics_Org(:, iter) = xdmd  .* exp(log(Edmd) * t(iter));
+  %     time_dynamics_Org(:, iter) = xdmd  .* exp(log(Edmd) * t(iter));
+ time_dynamics_Org(:, iter) = Norm_xdmd.*exp(log(DEv_xdmd)*t(iter)); original
 end
 
 % Compute Humidity ratio via DMD 
-Humidmd = Phi * time_dynamics_Org;
+%Humidmd = Phi * time_dynamics_Org;
+Humidmd =  DMDModes_xdmd * time_dynamics_Org;
 
 % save data
 save('Humidmd',"Humidmd");
