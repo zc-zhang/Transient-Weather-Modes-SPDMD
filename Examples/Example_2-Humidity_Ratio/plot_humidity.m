@@ -307,24 +307,24 @@ hold off;
 
 
 % Case 1: oiginal Humidity ratio data V0
-mean_V0 = mean(real(V0), 1);   % Mean over all 3880 trajectories, for each time step
-std_V0 = std(real(V0), 0, 1);  % Standard deviation over all 3880 trajectories, for each time step
+mean_V0 = mean(abs(V0), 1);   % Mean over all 3880 trajectories, for each time step
+std_V0 = std(abs(V0), 0, 1);  % Standard deviation over all 3880 trajectories, for each time step
 
 % Case 2: POD reconstruction
-mean_HPODTMs = mean(real(HPODTMs(:,1:end-1)), 1);   % Mean for Vdmd over 3880 trajectories
-std_HPODTMs = std(real(HPODTMs(:,1:end-1)), 0, 1);  % Standard deviation for Vdmd
+mean_HPODTMs = mean(abs(HPODTMs(:,1:end-1)), 1);   % Mean for Vdmd over 3880 trajectories
+std_HPODTMs = std(abs(HPODTMs(:,1:end-1)), 0, 1);  % Standard deviation for Vdmd
 
 % Case 3: DMD reconstruction
-mean_Humidmd = mean(real(Humidmd), 1);   % Mean for Vdmd over 3880 trajectories
-std_Humidmd = std(real(Humidmd), 0, 1);  % Standard deviation for Vdmd
+mean_Humidmd = mean(abs(Humidmd), 1);   % Mean for Vdmd over 3880 trajectories
+std_Humidmd = std(abs(Humidmd), 0, 1);  % Standard deviation for Vdmd
 
 % Case 4: companion DMD HCdmd
-mean_HCdmd = mean(real(HCdmd), 1);  % Mean for VCdmd over 3880 trajectories
-std_HCdmd = std(real(HCdmd), 0, 1);  % Standard deviation for VCdmd
+mean_HCdmd = mean(abs(HCdmd), 1);  % Mean for VCdmd over 3880 trajectories
+std_HCdmd = std(abs(HCdmd), 0, 1);  % Standard deviation for VCdmd
 
 % Case 5: sparsity-promoting DMD Humispdmd
-mean_Humispdmd  = mean(real(Humispdmd ), 1);   % Mean for Vspdmd over 3880 trajectories
-std_Humispdmd  = std(real(Humispdmd), 0, 1);  % Standard deviation for Vspdmd
+mean_Humispdmd  = mean(abs(Humispdmd ), 1);   % Mean for Vspdmd over 3880 trajectories
+std_Humispdmd  = std(abs(Humispdmd), 0, 1);  % Standard deviation for Vspdmd
 
 % Plot Case 1: V0
 % t= linspace(0,50, 51);
@@ -429,4 +429,32 @@ set(gca, 'FontName', 'cmr10', 'FontSize', 20);
 legend('DMD', 'spDMD');
 hold off;
 
+%%  Make Cross verification
+
+figure;
+
+% Plot Loss vs. Sparsity-promoting weights gamma (left y-axis)
+yyaxis left;
+%semilogx(answer.gamma, answer.Ploss, 'bo-', 'LineWidth', 1, 'MarkerSize', 7);
+plot(answer.gamma, answer.Ploss, 'bo-', 'LineWidth', 1, 'MarkerSize', 7);
+xlabel('Sparsity-promoting weights \gamma', 'Interpreter', 'tex');
+ylabel('Performance Loss (%)', 'Interpreter', 'tex');
+set(gca, 'YColor', 'b'); % Set y-axis color for Loss plot
+
+% Plot Nz vs. Sparsity-promoting weights gamma (right y-axis)
+yyaxis right;
+semilogx(answer.gamma, answer.Nz, 'rd--', 'LineWidth', 1, 'MarkerSize', 7);
+ylabel('N_z (Number of Non-Zero Modes)', 'Interpreter', 'tex');
+set(gca, 'YColor', 'r'); % Set y-axis color for N_z plot
+
+% Set font size and properties for labels
+%xlab = xlabel('\gamma', 'Interpreter', 'tex');
+xlabel('Sparsity Level \gamma', 'Interpreter', 'tex');
+set(xlab, 'FontName', 'cmr10', 'FontSize', 26);
+set(gca, 'FontName', 'cmr10', 'FontSize', 20);
+
+% Add a legend to distinguish between the two plots
+legend('Loss', '# Modes', 'Location', 'best');
+title('Accuarcy vs. Model Reduction')
+grid on;
 
