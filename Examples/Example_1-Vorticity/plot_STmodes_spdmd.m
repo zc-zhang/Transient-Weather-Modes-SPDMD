@@ -2,6 +2,24 @@
 % plot_spdmd_vorflow
 % plot_STmodes_spdmd.m
 
+%% sort amplitudes for xpol, xsp, xdmd
+% command 
+% 
+ [Norm_xdmd,Index_xdmd] = sort(abs(xdmd),'descend');
+ DEv_xdmd = Edmd(Index_xdmd);   %discrete-eigenvalues 
+ DMDModes_xdmd = Phi(:,Index_xdmd);
+% 
+ kk=50;
+% %sort_xsp = answer.xsp(:,kk)  
+% % sort of the large amplitudes rather than rank of Eigvals
+ [Norm_xsp,Index_xsp] = sort(abs(answer.xsp(:,kk)),'descend');  %return the value of order/peak ofamplitudes
+ DEv_xsp = Edmd(Index_xsp);   %discrete-eigenvalues 
+ DMDModes_xsp = Phi(:,Index_xsp);
+ 
+
+ [Norm_xpol,Index_xpol] = sort(abs(answer.xpol(:,kk)),'descend');
+ DEv_xpol = Edmd(Index_xpol);   %discrete-eigenvalues 
+ DMDModes_xpol = Phi(:,Index_xpol);
 
 
 %%% tempporal modes 
