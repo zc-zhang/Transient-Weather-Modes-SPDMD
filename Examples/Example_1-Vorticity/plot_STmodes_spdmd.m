@@ -1,5 +1,4 @@
 % plot the spatial modes and temporal 
-% plot_spdmd_vorflow
 % plot_STmodes_spdmd.m
 
 %% sort amplitudes for xpol, xsp, xdmd
@@ -22,7 +21,7 @@
  DMDModes_xpol = Phi(:,Index_xpol);
 
 
-%%% tempporal modes 
+%% tempporal modes 
 % Define modes to plot (example: 1, 3, 5, 7, 9, 11)
 kk =50;
 rr=answer.Nz(kk);
@@ -80,7 +79,7 @@ end
 
 
 
-%%%%%%%%%%%%%
+%===============================================================
 %%%% temporal modes of selsted + the i-the element of recosntraucted Vspdmd
 % Define time vector and initialize time dynamics
 t = linspace(0, 42, size(V0, 2));
@@ -95,6 +94,25 @@ end
 Vspdmd = DMDModes_xsp * time_dynamics;
 
 %save('Vspdmd',"Vspdmd")
+
+
+%% Plot Eigenvalues (spDMD vs DMD)
+nonzero_indices = find(answer.xsp(:,kk)); % Step 1: Find nonzero amplitudes
+[~, sort_order] = sort(nonzero_indices, 'descend'); 
+ival = nonzero_indices(sort_order);    % also ralted to `DEv_xsp' (the order of eigvals)
+% Spectrum of DT system via SpDMD vs DMD with different Nz
+figure;
+plot(Edmd, 'bo');
+hold on
+plot(Edmd(ival), 'r+');
+rectangle('Position', [-1 -1 2 2], 'Curvature', 1, ...
+'EdgeColor', 'k', 'LineStyle', '--');
+xlabel('Real part');
+ ylabel('Imaginary part');
+ title('Eigenvalues SCALE')
+axis (1.2*[-1 1 -1 1]);
+axis square;
+grid on
 
 % Create a single figure for combined plots
 figure;
@@ -147,11 +165,12 @@ Vdmd = Phi * time_dynamics_Org;
 
 
 
- %% Residual DMD
- %[G,K,L,PX,PY,PSI_x,PSI_y,PSI_y2] = kernel_ResDMD(V0,V1,'type',"Gaussian");
- [G,Kres,Lres,PX,PY] = kernel_ResDMD(V0,V1,'type',"Gaussian");
- [ResW,LAMres,W2] = eig(Kres,'vector');
-Res = abs(sqrt(real(diag(W2'*Lres*W2)./diag(W2'*W2)-abs(LAMres).^2)));
+% %% Residual DMD
+% [G,Kres,Lres,PX,PY] = kernel_ResDMD(V0,V1,'type',"Gaussian");
+% [ResW,LAMres,W2] = eig(Kres,'vector');
+%  Res = abs(sqrt(real(diag(W2'*Lres*W2)./diag(W2'*W2)-abs(LAMres).^2)));
+
+
 
 figure
 %scatter(real(LAMres),imag(LAMres),250,R,'.','LineWidth',1);
@@ -275,3 +294,7 @@ title('Comparison of Four Trajectories (V0, Vdmd, VCdmd, Vspdmd) with Shaded Err
 grid on;
 legend({'V0', 'Vdmd', 'VCdmd', 'Vspdmd'}, 'Location', 'Best');
 hold off;
+
+
+
+
