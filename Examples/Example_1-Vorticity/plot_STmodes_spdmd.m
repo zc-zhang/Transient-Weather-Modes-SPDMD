@@ -2,15 +2,15 @@
 % plot_STmodes_spdmd.m
 
 %% sort amplitudes for xpol, xsp, xdmd
-% command 
+% command it (if have been done)
 % 
  [Norm_xdmd,Index_xdmd] = sort(abs(xdmd),'descend');
  DEv_xdmd = Edmd(Index_xdmd);   %discrete-eigenvalues 
  DMDModes_xdmd = Phi(:,Index_xdmd);
-% 
+
+ 
  kk=50;
-% %sort_xsp = answer.xsp(:,kk)  
-% % sort of the large amplitudes rather than rank of Eigvals
+% sort of the large amplitudes rather than rank of Eigvals
  [Norm_xsp,Index_xsp] = sort(abs(answer.xsp(:,kk)),'descend');  %return the value of order/peak ofamplitudes
  DEv_xsp = Edmd(Index_xsp);   %discrete-eigenvalues 
  DMDModes_xsp = Phi(:,Index_xsp);
@@ -23,7 +23,7 @@
 
 %% tempporal modes 
 % Define modes to plot (example: 1, 3, 5, 7, 9, 11)
-kk =50;
+% kk =50;
 rr=answer.Nz(kk);
 modesToPlot = 1:2:rr; % Adjust this based on your actual mode range
 numModes = length(modesToPlot);
@@ -38,7 +38,7 @@ numCols = 3;
 
 % Calculate the linear index corresponding to this location
 highlight_index = (highlight_col - 1) * 40 + highlight_row;
-%highlight_index = (highlight_row - 1) * 97 + highlight_col;
+
 % Create a figure for the subplots
 figure;
 
@@ -49,10 +49,10 @@ for k = 1:numModes
     subplotRow = ceil(k / numCols);
     subplotCol = mod(k - 1, numCols) + 1;
     
-    % Extract and reshape mode_i
+    % Extract and reshape mode_i with amplituide (resp., real, image, angle parts)
     %mode_i = abs(DMDModes_xdmd(:, i)); % DMD modes
-    %mode_i = abs(DMDModes_xsp(:, i)); spDMDModes
-    %mode_i = abs(CKModes(:, i));
+    %mode_i = abs(CKModes(:, i));       % Companian Modes
+    mode_i = abs(DMDModes_xsp(:, i));  % spDMDModes
     mode_i = mode_i(1:40*97); % Extract the first 40*97 elements
     
     % Plot the spatial structure in the subplot
@@ -82,7 +82,7 @@ end
 %===============================================================
 %%%% temporal modes of selsted + the i-the element of recosntraucted Vspdmd
 % Define time vector and initialize time dynamics
-t = linspace(0, 42, size(V0, 2));
+t = linspace(0, 42, size(V0, 2));  % user-specific time horizion
 time_dynamics = zeros(r, length(t));
 
 % Compute the time dynamics for each time step
@@ -118,8 +118,8 @@ grid on
 figure;
 
 %highlight_index=1190;
-%  highlight_row = 22;
-%  highlight_col = 13;
+%  highlight_row = 26;
+%  highlight_col = 27;
 % 
 % % Calculate the linear index corresponding to this location
 % highlight_index = (highlight_col - 1) * 40 + highlight_row;
@@ -164,8 +164,8 @@ Vdmd = Phi * time_dynamics_Org;
  [CKModes,CKEv,CNorms,VCdmd] = CompanionMatrix_DMD( Vfull );
 
 
-
-% %% Residual DMD
+%option: Residual DMD testing
+% Residual DMD
 % [G,Kres,Lres,PX,PY] = kernel_ResDMD(V0,V1,'type',"Gaussian");
 % [ResW,LAMres,W2] = eig(Kres,'vector');
 %  Res = abs(sqrt(real(diag(W2'*Lres*W2)./diag(W2'*W2)-abs(LAMres).^2)));
