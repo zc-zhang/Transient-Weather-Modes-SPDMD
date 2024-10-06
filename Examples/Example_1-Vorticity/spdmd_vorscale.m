@@ -137,7 +137,9 @@ for i = 1:length(gammaval)
         % x-minimization step
         u = z - (1/rho) * y;
         xnew = Plow_star \ (Plow \ (q + (rho/2) * u));
+    %  warning('off', 'MATLAB:nearlySingularMatrix');
 
+    
         % z-minimization step
         a = (gamma / rho) * ones(n, 1);
         v = xnew + (1/rho) * y;
@@ -196,7 +198,7 @@ end
 
 
 %% sort amplitudes for xpol, xsp, xdmd
-% commandblock
+% command 
 % 
 % [Norm_xdmd,Index_xdmd] = sort(abs(xdmd),'descend');
 % DEv_xdmd = Edmd(Index_xdmd);   %discrete-eigenvalues 
