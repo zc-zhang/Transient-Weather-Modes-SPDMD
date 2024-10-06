@@ -1,11 +1,28 @@
+% reorder the rank of the amplitudes xdmd,xsp,xpol
+
+% [Norm_xdmd,Index_xdmd] = sort(abs(xdmd),'descend');
+% DEv_xdmd = Edmd(Index_xdmd);   %discrete-eigenvalues 
+% DMDModes_xdmd = Phi(:,Index_xdmd);
+% 
+kk=110;
+% %sort_xsp = answer.xsp(:,kk)  
+% % sort of the large amplitudes rather than rank of Eigvals
+% [Norm_xsp,Index_xsp] = sort(abs(answer.xsp(:,kk)),'descend');  %return the value of order/peak ofamplitudes
+% DEv_xsp = Edmd(Index_xsp);   %discrete-eigenvalues 
+% DMDModes_xsp = Phi(:,Index_xsp);
+% 
+% 
+% [Norm_xpol,Index_xpol] = sort(abs(answer.xpol(:,kk)),'descend');
+% DEv_xpol = Edmd(Index_xpol);   %discrete-eigenvalues 
+% DMDModes_xpol = Phi(:,Index_xpol);
 
 %kk =50; vorticity
-kk=110;
+% kk=110;
+
 rr=answer.Nz(kk);
 % figure
 % plot(abs(xdmd),'LineWidth',2.5,'Color','b','LineStyle','-')
 % hold on 
-% %kk=243;
 % plot(abs(answer.xpol(:,kk)),'LineWidth',2.5,'Color','r','LineStyle',':')
 % %plot(abs(answer.xsp(:,224)),'LineWidth',2.5,'Color','g','LineStyle',':')
 % %legend('DMD mode amplitude');  
@@ -468,7 +485,7 @@ hold off;
 
 % Parameters
 %rr = 25; % Number of modes
-gif_filename = 'KM_spdmd_scale_magnitude01.gif'; % Output GIF file name
+gif_filename = 'KM_spdmd_vorticity_magnitude01.gif'; % Output GIF file name
 
 % Define data dimensions
 rows = 40;
