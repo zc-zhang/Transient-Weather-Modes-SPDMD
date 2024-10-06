@@ -4,7 +4,7 @@
 % DEv_xdmd = Edmd(Index_xdmd);   %discrete-eigenvalues 
 % DMDModes_xdmd = Phi(:,Index_xdmd);
 % 
-kk=110;
+kk=50;    % vorticity
 % %sort_xsp = answer.xsp(:,kk)  
 % % sort of the large amplitudes rather than rank of Eigvals
 % [Norm_xsp,Index_xsp] = sort(abs(answer.xsp(:,kk)),'descend');  %return the value of order/peak ofamplitudes
@@ -16,9 +16,7 @@ kk=110;
 % DEv_xpol = Edmd(Index_xpol);   %discrete-eigenvalues 
 % DMDModes_xpol = Phi(:,Index_xpol);
 
-%kk =50; vorticity
-% kk=110;
-
+% kk=50; 
 rr=answer.Nz(kk);
 % figure
 % plot(abs(xdmd),'LineWidth',2.5,'Color','b','LineStyle','-')
