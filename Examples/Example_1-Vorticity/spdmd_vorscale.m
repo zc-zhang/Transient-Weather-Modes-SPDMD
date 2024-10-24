@@ -2,10 +2,8 @@
 
 
 % Extract V0 and V1 from Xfull
- % V0 = Vfull(:, 1:end-1);
- % V1 = Vfull(:, 2:end);
-V0 = Hdata(:,1:43-1);
-V1 = Hdata(:,2:43);
+  V0 = Vfull(:, 1:end-1);
+  V1 = Vfull(:, 2:end);
 [U,S,V] = svd(V0, 'econ');
 % matrix Vstar
 Vstar = V';
