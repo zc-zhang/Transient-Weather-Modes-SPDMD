@@ -78,7 +78,7 @@ xdmd = (Pl')\(Pl\q);     % i.e.,
 %% Set a set of gamma values (sparsity level)
 % % Define the parameters for generating gammaval values
  gamma_grd = 100; % Number of gammaval values
-min_gamma = 1e-3; % Minimum gammaval
+min_gamma = 1; % Minimum gammaval
  max_gamma =350; % Maximum gammaval
 % Generate gammaval values using logspace
  gammaval = logspace(log10(min_gamma), log10(max_gamma), gamma_grd);
