@@ -1,9 +1,11 @@
 % spdmd_scalar_field.m
 
+% load ('XScafull000.mat')
+% load ('scaledata240805b.mat')
 
-% Extract V0 and V1 from Vfull
-   V0 = XScafull000(:, 1:121-1);
-   V1 = XScafull000(:, 2:121);
+% Extract V0 and V1 from XScafull000
+   V0 = XScafull000(:, 1:end-1);
+   V1 = XScafull000(:, 2:end);
 [U,S,V] = svd(V0, 'econ');
 % matrix Vstar
 Vstar = V';
