@@ -107,6 +107,23 @@ semilogx(answer.gamma,answer.Ploss,'bo')
 xlabel('Sparsity-promoting weights \gamma','interpreter','tex')
 ylabel('Loss','interpreter','tex')
 
+%---------------------
+figure;
+%plot(answer.gamma, answer.Ploss, 'bo'); % Plot the data
+% Alternatively, use semilogx if required
+ semilogx(answer.gamma, answer.Ploss, 'bo');
+
+xlabel('Sparsity-promoting weights \gamma', 'interpreter', 'tex');
+ylabel('Loss', 'interpreter', 'tex');
+
+% Scale the y-axis tick labels
+yt = yticks; % Get current y-tick positions
+yticklabels(string(yt / 10)); % Divide tick labels by 10
+
+% Add a note in the upper-left corner of the figure
+text('Units', 'normalized', 'Position', [0.1, 0.9], ...
+    'String', '\times 10', 'FontSize', 12, 'Interpreter', 'tex');
+%-------------------------------------
 
 % Spectrum of DT system for a certain value of gamma
 %answer.Nz(kk) % index of non-zero amplitudes in gamma 
