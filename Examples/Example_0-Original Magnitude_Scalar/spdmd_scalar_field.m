@@ -2,8 +2,8 @@
 
 
 % Extract V0 and V1 from Vfull
-   V0 = XScafull000(:, 1:55-1);
-   V1 = XScafull000(:, 2:55);
+   V0 = XScafull000(:, 1:121-1);
+   V1 = XScafull000(:, 2:121);
 [U,S,V] = svd(V0, 'econ');
 % matrix Vstar
 Vstar = V';
@@ -77,9 +77,9 @@ xdmd = (Pl')\(Pl\q);     % i.e.,
 
 %% Set a set of gamma values (sparsity level)
 % % Define the parameters for generating gammaval values
- gamma_grd =500; % Number of gammaval values
+ gamma_grd =350; % Number of gammaval values
 min_gamma = 1e-1; % Minimum gammaval
- max_gamma =550; % Maximum gammaval
+ max_gamma =750; % Maximum gammaval
 % Generate gammaval values using logspace
  gammaval = logspace(log10(min_gamma), log10(max_gamma), gamma_grd);
 
@@ -194,25 +194,6 @@ for i = 1:length(gammaval)
 end
 
 
-%% sort amplitudes for xpol, xsp, xdmd
-% commandblock
-% 
-[Norm_xdmd,Index_xdmd] = sort(abs(xdmd),'descend');
-DEv_xdmd = Edmd(Index_xdmd);   %discrete-eigenvalues 
-DMDModes_xdmd = Phi(:,Index_xdmd);
-
-kk=50;
-%kk=30;
-sort_xsp = answer.xsp(:,kk);  
-%sort of the large amplitudes rather than rank of Eigvals
-[Norm_xsp,Index_xsp] = sort(abs(answer.xsp(:,kk)),'descend');  %return the value of order/peak of amplitudes
-DEv_xsp = Edmd(Index_xsp);   %discrete-eigenvalues 
-DMDModes_xsp = Phi(:,Index_xsp);
-
-
-[Norm_xpol,Index_xpol] = sort(abs(answer.xpol(:,kk)),'descend');
-DEv_xpol = Edmd(Index_xpol);   %discrete-eigenvalues 
-DMDModes_xpol = Phi(:,Index_xpol);
 
 
 
@@ -220,9 +201,8 @@ DMDModes_xpol = Phi(:,Index_xpol);
 % [Norm_xdmd,Index_xdmd] = sort(xdmd,'ComparisonMethod','real');
 % DEv_xdmd = Edmd(Index_xdmd);   %discrete-eigenvalues 
 % DMDModes_xdmd = Phi(:,Index_xdmd);
-% 
-% kk=50;
-% %kk=123;
+
+% kk=340; rr=15 
 % %sort_xsp = answer.xsp(:,kk);  
 % %sort of the large amplitudes rather than rank of Eigvals
 % [Norm_xsp,Index_xsp] = sort(answer.xsp(:,kk),'ComparisonMethod','real');  %return the value of order/peak of real
