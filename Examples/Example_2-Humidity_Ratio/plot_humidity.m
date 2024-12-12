@@ -429,6 +429,62 @@ set(gca, 'FontName', 'cmr10', 'FontSize', 20);
 legend('DMD', 'spDMD');
 hold off;
 
+
+
+%% --show Norm-e-folding time periodic
+
+% Assuming eigenvalues are given in Edmd(ival)
+eigenvalues = Edmd(ival); % Replace 'ival' with the index range of interest
+
+% Preallocate arrays for results
+num_eigenvalues = length(eigenvalues);
+norms = zeros(num_eigenvalues, 1);
+e_folding_times = zeros(num_eigenvalues, 1);
+periods = zeros(num_eigenvalues, 1);
+
+% Define constants
+time_step = 1; % Adjust this based on the time step of your system (e.g., days, months)
+
+% Loop through each eigenvalue
+for i = 1:num_eigenvalues
+    lambda = eigenvalues(i);
+    
+    % Compute norm
+    norms(i) = abs(lambda);
+    
+    % Compute e-folding time
+    if abs(lambda) < 1
+        e_folding_times(i) = -time_step / log(abs(lambda)); % Only compute for stable modes
+    else
+        e_folding_times(i) = Inf; % Unstable modes do not have an e-folding time
+    end
+    
+    % Compute period (if applicable)
+    omega = imag(log(lambda)); % Imaginary part of the logarithm gives angular frequency
+    if omega ~= 0
+        periods(i) = 2 * pi / abs(omega); % Period from angular frequency
+    else
+        periods(i) = Inf; % Non-oscillatory modes do not have a period
+    end
+end
+
+
+%% show the print results 
+% Display results with appropriate formatting
+fprintf(' Mode  Index_Mode  Norm_xsp  Norm_Eigvals   DEv_xsp   E-Folding Time       Period\n');
+fprintf('------------------------------------------------------------------------------------------\n');
+
+for i = 1:num_eigenvalues
+    % Split into separate lines for better clarity
+    fprintf('%5d      %5d      %.2f       %.2f      %.3f + %.3fi', ...
+            i, Index_xsp(i), Norm_xsp(i), abs(DEv_xsp(i)), real(eigenvalues(i)), imag(eigenvalues(i)));
+    
+    fprintf('       %.2f                %.2f\n', ...
+            e_folding_times(i), periods(i));
+end
+
+
+
 %%  Make Cross verification
 
 figure;
@@ -449,8 +505,7 @@ set(gca, 'YColor', 'r'); % Set y-axis color for N_z plot
 
 % Set font size and properties for labels
 %xlab = xlabel('\gamma', 'Interpreter', 'tex');
-xlabel('Sparsity Level \gamma', 'Interpreter', 'tex');
-set(xlab, 'FontName', 'cmr10', 'FontSize', 26);
+xlabel('\gamma', 'Interpreter', 'latex');
 set(gca, 'FontName', 'cmr10', 'FontSize', 20);
 
 % Add a legend to distinguish between the two plots
