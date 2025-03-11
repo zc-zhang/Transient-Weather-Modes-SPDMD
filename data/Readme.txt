@@ -19,6 +19,9 @@
 
 
 % XScafull.mat     % magnitude of scale data (scalar filed) does not perform vortex dynamics (original data)
+% comp_scalar_flow.m   % compute/make a gif for magnitude of scalar flow and generate ('XScafull.mat')
+                       % option 1: contourf(.) plot
+                       % option 2: imagesc(.) plot
 
 % datahandle0805.m   % handle data (i.e., generating the SCALE data. such as 'Pdata.mat', 'Tdata.ma', 'Hdata.mat') by YS
 % vorflow.m          % load('scaledata240805b.mat') to get 'Vfull09.mat' data
