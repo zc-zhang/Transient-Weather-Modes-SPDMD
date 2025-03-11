@@ -18,7 +18,7 @@
 % Vfull12.mat    % magnitude of vorticityu data, only compute the omega_x (vorticity_x) case by 'vorflow241202.m' 
 
 
-% XScafull.mat     % magnitude of scale data (scalar filed) does not perform vortex dynamics (original data)
+% XScafull.mat     % magnitude of scale data (scalar field) does not perform vortex dynamics (original data)
 % comp_scalar_flow.m   % compute/make a gif for magnitude of scalar flow and generate ('XScafull.mat')
                        % option 1: contourf(.) plot
                        % option 2: imagesc(.) plot
