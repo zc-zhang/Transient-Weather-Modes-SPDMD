@@ -17,7 +17,7 @@ N = size (Vstar,2);
 
 % Optimal DMD matrix resulting from Schmid's 2010 algorithm
 %Fdmd = U'*X1*V*inv(S)
-Fdmd = (UstarV1)/S;
+Fdmd = (UstarV1*V)/S;
 % Determine the rank of Fdmd
 r = rank(Fdmd); % set the number of modes
 %r = 50;
