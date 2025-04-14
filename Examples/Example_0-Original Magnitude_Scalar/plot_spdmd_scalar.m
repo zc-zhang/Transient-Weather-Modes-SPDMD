@@ -482,10 +482,11 @@ t= linspace(0,42, size(V0, 2));
 time_dynamics = zeros(r,length(t));
 %sort_time_dynamics = zeros(r,length(t));
 for iter = 1:length(t)
-%time_dynamics (:,iter) = (Norm_xdmd.*exp(log(DEv_xdmd)*t(iter))); original
-%time_dynamics (:,iter) = (Norm_xpol.*exp(log(DEv_xpol)*t(iter)));
-time_dynamics (:,iter) = (Norm_xsp.*exp(log(DEv_xsp)*t(iter)));
+%time_dynamics (:,iter) = (xdmd.*exp(log(DEv_xdmd)*t(iter))); original
+%time_dynamics (:,iter) = (answer.xpol(:,kk).*exp(log(DEv_xpol)*t(iter)));
+%time_dynamics (:,iter) = (answer.xsp(:,kk).*exp(log(DEv_xsp)*t(iter)));
 %sort_time_dynamics(:,iter) = (b_sort.*exp(omega*t(iter)));
+time_dynamics (:,iter) = answer.xsp(:,kk).*exp(log(DEv_xsp)*t(iter))); %time_dynamics (:,iter) = (Norm_xsp.*exp(log(DEv_xsp)*t(iter)));
 end
 
 % Visualize Temporal Dynamics 
@@ -505,12 +506,13 @@ time_dynamics = zeros(r, length(t));
 
 % Compute the time dynamics for each time step
 for iter = 1:length(t)
-    time_dynamics(:, iter) = Norm_xsp .* exp(log(DEv_xsp) * t(iter));
+   % time_dynamics(:, iter) = Norm_xsp .* exp(log(DEv_xsp) * t(iter));
+   time_dynamics(:, iter) = answer.xsp(:,kk).* exp(log(DEv_xsp) * t(iter));
 end
 
 %%% DMDModes_xsp is the DMD modes (i.e., Phi) with sparsity case
-Vspdmd = DMDModes_xsp*time_dynamics;
-
+% Vspdmd = DMDModes_xsp*time_dynamics;
+Vspdmd = Phi*diag(answer.xsp(:,kk))*Vand;
 
 %% hightindex 
 plot(real(Vspdmd(highlight_index,:)))
@@ -532,17 +534,20 @@ hold off; % Release the hold on the figure
 
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %%%% temporal modes of selsted + the i-the element of recosntraucted Vspdmd
+%% Option 1:
 % Define time vector and initialize time dynamics
 t = linspace(0, 42, size(V0, 2));
 time_dynamics = zeros(r, length(t));
 
 % Compute the time dynamics for each time step
 for iter = 1:length(t)
-    time_dynamics(:, iter) = Norm_xsp .* exp(log(DEv_xsp) * t(iter));
+    time_dynamics(:, iter) = answer.xsp(:,kk) .* exp(log(DEv_xsp) * t(iter));
 end
 
 % Compute Vspdmd
-Vspdmd = DMDModes_xsp * time_dynamics;
+% Vspdmd = DMDModes_xsp * time_dynamics;
+%% Option 2:
+Vspdmd = Phi*diag(answer.xsp(:,kk))*Vand;
 
 % Create a single figure for combined plots
 figure;
