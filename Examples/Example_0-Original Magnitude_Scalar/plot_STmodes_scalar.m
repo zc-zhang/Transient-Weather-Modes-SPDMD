@@ -106,12 +106,13 @@ time_dynamics = zeros(r, length(t));
 
 % Compute the time dynamics for each time step
 for iter = 1:length(t)
-    time_dynamics(:, iter) = Norm_xsp .* exp(log(DEv_xsp) * t(iter));
-    %time_dynamics(:, iter) = answer.xsp(:,kk) .* exp(log(DEv_xsp) * t(iter));
+    % time_dynamics(:, iter) = Norm_xsp .* exp(log(DEv_xsp) * t(iter));
+    time_dynamics(:, iter) = answer.xsp(:,kk) .* exp(log(DEv_xsp) * t(iter));
 end
 
 % Compute Vspdmd
-Vspdmd = DMDModes_xsp * time_dynamics;
+% Vspdmd= Phi * diag(answer.xsp(:,kk))*Vand;  % Vspdmd = DMDModes_xsp * diag(answer.xsp(:,kk))*Vand; 
+%Vspdmd = DMDModes_xsp * time_dynamics; 
 
 %save('Vspdmd',"Vspdmd")
 
@@ -153,7 +154,8 @@ time_dynamics_Org = zeros(r, length(t));
 % Compute the time dynamics for each time step
 for iter = 1:length(t)
    % time_dynamics_Org(:, iter) = xdmd .* exp(log(DEv_xdmd) * t(iter));
-       time_dynamics_Org(:, iter) = Norm_xdmd  .* exp(log(DEv_xdmd) * t(iter));
+    %   time_dynamics_Org(:, iter) = Norm_xdmd  .* exp(log(DEv_xdmd) * t(iter));
+    time_dynamics_Org(:, iter) = xdmd .* exp(log(DEv_xdmd) * t(iter));
 end
 
 % Compute Vdmd 
