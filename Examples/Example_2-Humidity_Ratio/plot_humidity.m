@@ -4,6 +4,7 @@
 
 [Norm_xdmd,Index_xdmd] = sort(abs(xdmd),'descend');
 DEv_xdmd = Edmd(Index);   %discrete-eigenvalues 
+xdmd_sorted = xdmd(Index_xdmd);  
 DMDModes_xdmd = Phi(:,Index_xdmd);
 
 kk=170;
@@ -13,12 +14,13 @@ rr=answer.Nz(kk);
 % sort of the large amplitudes rather than rank of Eigvals
 [Norm_xsp,Index_xsp] = sort(abs(answer.xsp(:,kk)),'descend');  %return the value of order/peak ofamplitudes
 DEv_xsp = Edmd(Index_xsp);   %discrete-eigenvalues 
-xsp_sorted = answer.xsp(Index_xsp,kk);
+xsp_sorted = answer.xsp(Index_xsp,kk);  % sorted the amplitudes
 DMDModes_xsp = Phi(:,Index_xsp);
 
 
 [Norm_xpol,Index_xpol] = sort(abs(answer.xpol(:,kk)),'descend');
 DEv_xpol = Edmd(Index_xpol);   %discrete-eigenvalues 
+xpol_sorted = answer.xpol(Index_xpol,kk);
 DMDModes_xpol = Phi(:,Index_xpol);
 
 
@@ -144,10 +146,10 @@ t= linspace(0,49, 50);
 time_dynamics = zeros(r,length(t));
 %sort_time_dynamics = zeros(r,length(t));
 for iter = 1:length(t)
-%time_dynamics (:,iter) = (Norm_xdmd.*exp(log(DEv_xdmd)*t(iter))); original
-%time_dynamics (:,iter) = (Norm_xpol.*exp(log(DEv_xpol)*t(iter)));
-%time_dynamics (:,iter) = (Norm_xsp.*exp(log(DEv_xsp)*t(iter)));
-% time_dynamics_Org(:, iter) = answer.xsp(:,kk).* exp(log(DEv_xdmd) * t(iter));
+%time_dynamics (:,iter) = (xdmd_sorted.*exp(log(DEv_xdmd)*t(iter))); original
+%time_dynamics (:,iter) = (xpol_sorted.*exp(log(DEv_xpol)*t(iter)));
+%time_dynamics (:,iter) = (xsp_sorted.*exp(log(DEv_xsp)*t(iter)));
+% time_dynamics_Org(:, iter) = answer.xsp(:,kk).* exp(log(DEv_xdmd) * t(iter)); % without sorted 
  time_dynamics(:, iter) =  xsp_sorted.* exp(log(DEv_xsp) * t(iter)); % sorted
 end
 
