@@ -207,17 +207,20 @@ end
 % 
 % [Norm_xdmd,Index_xdmd] = sort(abs(xdmd),'descend');
 % DEv_xdmd = Edmd(Index_xdmd);   %discrete-eigenvalues 
+% xdmd_sorted = xsp(Index_xdmd);  % Sorted amplitudes
 % DMDModes_xdmd = Phi(:,Index_xdmd);
 % 
 % kk=110;
 % %sort_xsp = answer.xsp(:,kk)  
 % % sort of the large amplitudes rather than rank of Eigvals
 % [Norm_xsp,Index_xsp] = sort(abs(answer.xsp(:,kk)),'descend');  %return the value of order/peak ofamplitudes
+% xsp_sorted = answer.xsp(Index_xsp, kk);  % Sorted amplitudes
 % DEv_xsp = Edmd(Index_xsp);   %discrete-eigenvalues 
 % DMDModes_xsp = Phi(:,Index_xsp);
 % 
 % 
 % [Norm_xpol,Index_xpol] = sort(abs(answer.xpol(:,kk)),'descend');
 % DEv_xpol = Edmd(Index_xpol);   %discrete-eigenvalues 
+% xpol_sorted = answer.xpol(Index_xpol, kk);  % Sorted amplitudes
 % DMDModes_xpol = Phi(:,Index_xpol);
 
