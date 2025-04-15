@@ -3,7 +3,7 @@
 % sort amplitudes for xpol, xsp, xdmd
 
 [Norm_xdmd,Index_xdmd] = sort(abs(xdmd),'descend');
-DEv_xdmd = Edmd(Index_xdmd);   %discrete-eigenvalues 
+DEv_xdmd = Edmd(Index);   %discrete-eigenvalues 
 DMDModes_xdmd = Phi(:,Index_xdmd);
 
 kk=170;
@@ -146,11 +146,12 @@ for iter = 1:length(t)
 %time_dynamics (:,iter) = (Norm_xdmd.*exp(log(DEv_xdmd)*t(iter))); original
 %time_dynamics (:,iter) = (Norm_xpol.*exp(log(DEv_xpol)*t(iter)));
 %time_dynamics (:,iter) = (Norm_xsp.*exp(log(DEv_xsp)*t(iter)));
- time_dynamics_Org(:, iter) = answer.xsp(:,kk).* exp(log(DEv_xdmd) * t(iter));
+% time_dynamics_Org(:, iter) = answer.xsp(:,kk).* exp(log(DEv_xdmd) * t(iter));
+ time_dynamics(:, iter) =  xsp_sorted.* exp(log(DEv_xsp) * t(iter)); % sorted
 end
 
-% Humispdmd = DMDModes_xsp * time_dynamics;
-  Humispdmd = Phi * diag(answer.xsp(:,kk))*Vand;
+% Humispdmd = DMDModes_xsp * time_dynamics;  % sorted 
+  Humispdmd = Phi * diag(answer.xsp(:,kk))*Vand; % withoutsoretd
 % save data 
 save('Humispdmd',"Humispdmd");
 
