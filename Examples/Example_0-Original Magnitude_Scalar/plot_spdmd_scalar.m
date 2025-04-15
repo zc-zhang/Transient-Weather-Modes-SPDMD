@@ -479,6 +479,7 @@ end
 
 
 t= linspace(0,42, size(V0, 2));
+% r=rank(Sigma);
 time_dynamics = zeros(r,length(t));
 %sort_time_dynamics = zeros(r,length(t));
 %xsp_sorted = answer.xsp(Index_xsp, kk);  % Sorted amplitudes
@@ -509,7 +510,7 @@ time_dynamics = zeros(r, length(t));
 % Compute the time dynamics for each time step
 for iter = 1:length(t)
    % time_dynamics(:, iter) = Norm_xsp .* exp(log(DEv_xsp) * t(iter)); % not right (abs(temporal) ok)
-   time_dynamics(:, iter) = xsp_sorted.* exp(log(DEv_xsp) * t(iter));
+   time_dynamics(:, iter) = xsp_sorted.* exp(log(DEv_xsp) * t(iter)); % sorted temporal dynamics
 end
 
 %%% DMDModes_xsp is the DMD modes (i.e., Phi) with sparsity case
@@ -543,7 +544,8 @@ time_dynamics = zeros(r, length(t));
 
 % Compute the time dynamics for each time step
 for iter = 1:length(t)
-    time_dynamics(:, iter) = answer.xsp(:,kk) .* exp(log(DEv_xsp) * t(iter));
+    %time_dynamics(:, iter) = answer.xsp(:,kk) .* exp(log(DEv_xsp) * t(iter));
+     time_dynamics(:, iter) = xsp_sorted.*exp(log(DEv_xsp)*t(iter)));
 end
 
 % Compute Vspdmd
@@ -779,11 +781,12 @@ hold off;
 % % Step 2: Compute the time dynamics for each time step
 % time_dynamics = zeros(r, length(t));
 % for iter = 1:length(t)
-%     time_dynamics(:, iter) = Norm_xsp .* exp(log(DEv_xsp) * t(iter));
+%    time_dynamics(:, iter) = xsp_sorted.*exp(log(DEv_xsp)*t(iter)));
 % end
 % 
 % %%% DMDModes_xsp is the DMD modes (i.e., Phi) with sparsity case
-% Vspdmd = DMDModes_xsp * time_dynamics;
+% Vspdmd = Phi*diag(answer.xsp(:,kk))*Vand; % unsorted of Vspdmd
+% Vspdmd = DMDModes_xsp * time_dynamics;  % sorted version of Vspdmd
 % 
 % % % Step 3: Extract the temporal evolution of the highlighted index from the original data
 %  x_k_highlight = V0(highlight_index, :); % Extracting the i-th element across all snapshots
@@ -830,7 +833,7 @@ hold off;
 % % Step 2: Compute the time dynamics for each time step
 % time_dynamics = zeros(r, length(t));
 % for iter = 1:length(t)
-%     time_dynamics(:, iter) = Norm_xsp .* exp(log(DEv_xsp) * t(iter));
+%   time_dynamics(:, iter) = xsp_sorted.*exp(log(DEv_xsp)*t(iter)))
 % end
 % 
 % %%% DMDModes_xsp is the DMD modes (i.e., Phi) with sparsity case
@@ -891,7 +894,7 @@ hold off;
 % % Step 2: Compute the time dynamics for each time step
 % time_dynamics = zeros(r, length(t));
 % for iter = 1:length(t)
-%     time_dynamics(:, iter) = Norm_xsp .* exp(log(DEv_xsp) * t(iter));
+%     time_dynamics(:, iter) = xsp_sorted.*exp(log(DEv_xsp)*t(iter)));
 % end
 % 
 % %%% DMDModes_xsp is the DMD modes (i.e., Phi) with sparsity case
