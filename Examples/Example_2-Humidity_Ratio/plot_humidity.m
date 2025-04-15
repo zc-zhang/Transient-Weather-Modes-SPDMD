@@ -9,10 +9,11 @@ DMDModes_xdmd = Phi(:,Index_xdmd);
 kk=170;
 rr=answer.Nz(kk);
 
-%sort_xsp = answer.xsp(:,kk)  
+%sort_xsp   
 % sort of the large amplitudes rather than rank of Eigvals
 [Norm_xsp,Index_xsp] = sort(abs(answer.xsp(:,kk)),'descend');  %return the value of order/peak ofamplitudes
 DEv_xsp = Edmd(Index_xsp);   %discrete-eigenvalues 
+xsp_sorted = answer.xsp(Index_xsp,kk);
 DMDModes_xsp = Phi(:,Index_xsp);
 
 
