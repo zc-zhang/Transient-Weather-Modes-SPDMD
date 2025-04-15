@@ -2,6 +2,7 @@
 
 % [Norm_xdmd,Index_xdmd] = sort(abs(xdmd),'descend');
 % DEv_xdmd = Edmd(Index_xdmd);   %discrete-eigenvalues 
+%xdmd_sorted = answer.xdmd(Index_xdmd, kk);  % Sorted amplitudes
 % DMDModes_xdmd = Phi(:,Index_xdmd);
 % 
 kk=50;    % vorticity
@@ -9,11 +10,13 @@ kk=50;    % vorticity
 % % sort of the large amplitudes rather than rank of Eigvals
 % [Norm_xsp,Index_xsp] = sort(abs(answer.xsp(:,kk)),'descend');  %return the value of order/peak ofamplitudes
 % DEv_xsp = Edmd(Index_xsp);   %discrete-eigenvalues 
+% xsp_sorted = answer.xsp(Index_xsp, kk);  % Sorted amplitudes
 % DMDModes_xsp = Phi(:,Index_xsp);
 % 
 % 
 % [Norm_xpol,Index_xpol] = sort(abs(answer.xpol(:,kk)),'descend');
 % DEv_xpol = Edmd(Index_xpol);   %discrete-eigenvalues 
+% xpol_sorted = answer.xpol(Index_xpol, kk);  % Sorted amplitudes
 % DMDModes_xpol = Phi(:,Index_xpol);
 
 % kk=50; 
@@ -446,16 +449,22 @@ hold off; % Release the hold on the figure
 %%%% temporal modes of selsted + the i-the element of recosntraucted Vspdmd
 % Define time vector and initialize time dynamics
 t = linspace(0, 42, size(V0, 2));
+%  xsp_sorted = answer.xsp(Index_xsp, kk);  % Sorted amplitudes
+% r =rank(Sigma); 
 time_dynamics = zeros(r, length(t));
 
 % Compute the time dynamics for each time step
 for iter = 1:length(t)
     %time_dynamics(:, iter) = Norm_xsp .* exp(log(DEv_xsp) * t(iter));
-    time_dynamics(:, iter) = answer.xsp(:,kk).* exp(log(DEv_xsp) * t(iter));
+   % time_dynamics(:, iter) = answer.xsp(:,kk).* exp(log(DEv_xsp) * t(iter)); % without sorted
+   time_dynamics(:, iter) =  xsp_sorted.* exp(log(DEv_xsp) * t(iter)); % sorted
 end
 
 % Compute Vspdmd
-%Vspdmd = DMDModes_xsp * time_dynamics;
+%Vspdmd = DMDModes_xsp * time_dynamics;  % sorted dynmaics
+
+% without sorted 
+Vspdmd =Phi*diag(answer.xsp(:,kk))*Vand;
 
 % Create a single figure for combined plots
 figure;
@@ -686,7 +695,7 @@ t = linspace(0, 42, size(V0, 2)); % Assuming t ranges from 0 to 42 over the numb
 time_dynamics = zeros(r, length(t));
 for iter = 1:length(t)
     % time_dynamics(:, iter) = Norm_xsp .* exp(log(DEv_xsp) * t(iter));
-    time_dynamics(:, iter) = answer.xsp(:,kk) .* exp(log(DEv_xsp) * t(iter));
+   % time_dynamics(:, iter) = answer.xsp(:,kk) .* exp(log(DEv_xsp) * t(iter));
 end
 
 %%% DMDModes_xsp is the DMD modes (i.e., Phi) with sparsity case
@@ -801,11 +810,13 @@ t = linspace(0, 42, size(V0, 2)); % Assuming t ranges from 0 to 42 over the numb
 time_dynamics = zeros(r, length(t));
 for iter = 1:length(t)
    % time_dynamics(:, iter) = Norm_xsp .* exp(log(DEv_xsp) * t(iter));
-    time_dynamics(:, iter) = answer.xsp(:,kk) .* exp(log(DEv_xsp) * t(iter));
+   % time_dynamics(:, iter) = answer.xsp(:,kk) .* exp(log(DEv_xsp) * t(iter)); %without sorted
+     time_dynamics(:, iter) =  xsp_sorted.* exp(log(DEv_xsp) * t(iter)); % sorted
 end
 
 %%% DMDModes_xsp is the DMD modes (i.e., Phi) with sparsity case
-Vspdmd = DMDModes_xsp * time_dynamics;
+%Vspdmd = DMDModes_xsp * time_dynamics;  % sorted 
+%Vspdmd = Phi*diag(answer.xsp(:,kk))*Vand;
 
 % Step 4: Extract the temporal evolution of the highlighted index from the DMD reconstruction
 Vspdmd_highlight = Vspdmd(highlight_index, :); % Extracting the i-th element across all snapshots in DMD reconstruction
