@@ -209,9 +209,11 @@ end
 % %sort of the large amplitudes rather than rank of Eigvals
 % [Norm_xsp,Index_xsp] = sort(answer.xsp(:,kk),'ComparisonMethod','real');  %return the value of order/peak of real
 % DEv_xsp = Edmd(Index_xsp);   %discrete-eigenvalues 
+% xsp_sorted = answer.xsp(Index_xsp, kk);  % Sorted amplitudes
 % DMDModes_xsp = Phi(:,Index_xsp);
 % 
 % 
 % [Norm_xpol,Index_xpol] = sort(answer.xpol(:,kk),'ComparisonMethod','real');
 % DEv_xpol = Edmd(Index_xpol);   %discrete-eigenvalues 
+% xpol_sorted = answer.xpl(Index_xpol, kk);  % Sorted amplitudes
 % DMDModes_xpol = Phi(:,Index_xpol);
