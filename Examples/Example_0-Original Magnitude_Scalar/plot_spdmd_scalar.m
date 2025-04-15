@@ -481,12 +481,14 @@ end
 t= linspace(0,42, size(V0, 2));
 time_dynamics = zeros(r,length(t));
 %sort_time_dynamics = zeros(r,length(t));
+%xsp_sorted = answer.xsp(Index_xsp, kk);  % Sorted amplitudes
 for iter = 1:length(t)
 %time_dynamics (:,iter) = (xdmd.*exp(log(DEv_xdmd)*t(iter))); original
 %time_dynamics (:,iter) = (answer.xpol(:,kk).*exp(log(DEv_xpol)*t(iter)));
 %time_dynamics (:,iter) = (answer.xsp(:,kk).*exp(log(DEv_xsp)*t(iter)));
 %sort_time_dynamics(:,iter) = (b_sort.*exp(omega*t(iter)));
-time_dynamics (:,iter) = answer.xsp(:,kk).*exp(log(DEv_xsp)*t(iter))); %time_dynamics (:,iter) = (Norm_xsp.*exp(log(DEv_xsp)*t(iter)));
+%time_dynamics (:,iter) = answer.xsp(:,kk).*exp(log(DEv_xsp)*t(iter))); %without sorted %time_dynamics (:,iter) = (Norm_xsp.*exp(log(DEv_xsp)*t(iter)));
+time_dynamics (:,iter) = xsp_sorted.*exp(log(DEv_xsp)*t(iter)));
 end
 
 % Visualize Temporal Dynamics 
@@ -506,13 +508,13 @@ time_dynamics = zeros(r, length(t));
 
 % Compute the time dynamics for each time step
 for iter = 1:length(t)
-   % time_dynamics(:, iter) = Norm_xsp .* exp(log(DEv_xsp) * t(iter));
-   time_dynamics(:, iter) = answer.xsp(:,kk).* exp(log(DEv_xsp) * t(iter));
+   % time_dynamics(:, iter) = Norm_xsp .* exp(log(DEv_xsp) * t(iter)); % not right (abs(temporal) ok)
+   time_dynamics(:, iter) = xsp_sorted.* exp(log(DEv_xsp) * t(iter));
 end
 
 %%% DMDModes_xsp is the DMD modes (i.e., Phi) with sparsity case
-% Vspdmd = DMDModes_xsp*time_dynamics;
-Vspdmd = Phi*diag(answer.xsp(:,kk))*Vand;
+% Vspdmd = DMDModes_xsp*time_dynamics;  % soretded
+Vspdmd = Phi*diag(answer.xsp(:,kk))*Vand; % without sorted
 
 %% hightindex 
 plot(real(Vspdmd(highlight_index,:)))
