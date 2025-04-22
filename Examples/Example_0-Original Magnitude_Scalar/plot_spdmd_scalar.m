@@ -394,7 +394,7 @@ fprintf('-----------------------------------------------------------------------
 for i = 1:num_eigenvalues
     % Split into separate lines for better clarity
     fprintf('%5d      %5d      %.2f       %.2f      %.3f + %.3fi', ...
-            i, Index_xsp(i), Norm_xsp(i), DEv_xsp(i), real(eigenvalues(i)), imag(eigenvalues(i)));
+            i, Index_xsp(i), Norm_xsp(i), abs(DEv_xsp(i)), real(eigenvalues(i)), imag(eigenvalues(i)));
     
     fprintf('       %.2f                %.2f\n', ...
             e_folding_times(i), periods(i));
