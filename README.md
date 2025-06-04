@@ -4,6 +4,36 @@ Koopman operator theory provides the spectral analysis for the nonlinear behavio
 In weather or climate modeling, the true dynamics is usually beyond the mathematical model. However, it is always possible to measure the (short-term) time series data (e.g., SCALE weather simulation data, see: https://scale.riken.jp) .
 Based on these weather data at hand, we can exploit data-driven computational method, such as dynamic mode decomposition (DMD) and its variants (e.g., sparsity-promoting dynamic mode decomposition, SPDMD) to further study the spectrum distributions and the corresponding spatial and temporal modes.
 
+# Goal
+Extract the transient modes in twerms of warm bubble-like pattern by suing SPDMD.
+\begin{align}
+\bfY =
+     \begin{bmatrix}
+       |     & |     & \cdots & |\\
+      \bfy_{0} & \bfy_{1} & \cdots &\bfy_{N-1}  \\
+       |     & |     & \cdots & |
+     \end{bmatrix}
+   \approx
+   \underbrace{\begin{bmatrix}
+      |    & | & \cdots & |\\
+      {\bm \phi}_{1} & {\bm \phi}_{2} & \cdots & {\bm \phi}_{r}  \\
+        |    & |&  \cdots & |
+    \end{bmatrix}}_{=:{\bm\Phi}_r} 
+    \underbrace{\begin{bmatrix}
+        b_{1}  & &\\
+        & b_{2} & &\\
+        & \ddots&\\
+        & & b_{r}
+    \end{bmatrix}}_{=:\mathrm{diag}(\bfb_r)}
+    \underbrace{\begin{bmatrix}
+        1 & \lambda_{1} & \ldots & \lambda_{1}^{N-1}\\
+        1 & \lambda_{2} & \ldots & \lambda_{2}^{N-1}\\
+         \vdots & \vdots & \ddots &\vdots\\
+          1 & \lambda_{r} & \ldots & \lambda_{r}^{N-1}\\
+    \end{bmatrix}}_{=:\bfV_r},
+\end{align}
+
+
 # References:
 [1] M. Jovanovic, P. Schmid, and J. Nichols, Sparsity-promoting dynamic mode decomposition, Physics of Fluids, 26, 024103 (2014).  
 Doi: https://doi.org/10.1063/1.4863670; dmdsp: https://www.ece.umn.edu/users/mihailo/software/dmdsp/  
