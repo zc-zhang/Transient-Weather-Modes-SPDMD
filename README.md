@@ -7,11 +7,11 @@ Based on these weather data at hand, we can exploit data-driven computational me
 # Goal
 Extract the transient modes in twerms of warm bubble-like pattern by suing SPDMD.  
 
-The matrix \({Y}\) is approximated as:
+The matrix \(Y\) is approximated as:
 
 \[
-{Y} = \begin{bmatrix}
-{y}_0 & {y}_1 & \cdots & {y}_{N-1}
+Y = \begin{bmatrix}
+y_0 & y_1 & \cdots & y_{N-1}
 \end{bmatrix}
 \approx {\Phi}_r \cdot \mathrm{diag}({b}_r) \cdot {V}_r
 \]
