@@ -5,7 +5,7 @@ In weather or climate modeling, the true dynamics is usually beyond the mathemat
 Based on these weather data at hand, we can exploit data-driven computational method, such as dynamic mode decomposition (DMD) and its variants (e.g., sparsity-promoting dynamic mode decomposition, SPDMD) to further study the spectrum distributions and the corresponding spatial and temporal modes.
 
 # Goal
-Extract the transient modes in twerms of warm bubble-like pattern by suing SPDMD.  
+Extract the transient modes in twerms of warm bubble-like pattern by SPDMD.  
 
 
 # References:
