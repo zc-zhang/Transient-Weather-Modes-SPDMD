@@ -7,19 +7,19 @@ Based on these weather data at hand, we can exploit data-driven computational me
 # Goal
 Extract the transient modes in twerms of warm bubble-like pattern by suing SPDMD.  
 
-The matrix \(\mathbf{Y}\) is approximated as:
+The matrix \({Y}\) is approximated as:
 
 \[
-\mathbf{Y} = \begin{bmatrix}
-\mathbf{y}_0 & \mathbf{y}_1 & \cdots & \mathbf{y}_{N-1}
+{Y} = \begin{bmatrix}
+{y}_0 & {y}_1 & \cdots & {y}_{N-1}
 \end{bmatrix}
-\approx \mathbf{\Phi}_r \cdot \mathrm{diag}(\mathbf{b}_r) \cdot \mathbf{V}_r
+\approx {\Phi}_r \cdot \mathrm{diag}({b}_r) \cdot {V}_r
 \]
 
 where:
-- \(\mathbf{\Phi}_r = \begin{bmatrix} \boldsymbol{\phi}_1 & \boldsymbol{\phi}_2 & \cdots & \boldsymbol{\phi}_r \end{bmatrix}\),
-- \(\mathrm{diag}(\mathbf{b}_r) = \begin{bmatrix} b_1 & & & \\ & b_2 & & \\ & & \ddots & \\ & & & b_r \end{bmatrix}\),
-- \(\mathbf{V}_r = \begin{bmatrix}
+- \({\Phi}_r = \begin{bmatrix} \boldsymbol{\phi}_1 & \boldsymbol{\phi}_2 & \cdots & \boldsymbol{\phi}_r \end{bmatrix}\),
+- \(\mathrm{diag}({b}_r) = \begin{bmatrix} b_1 & & & \\ & b_2 & & \\ & & \ddots & \\ & & & b_r \end{bmatrix}\),
+- \({V}_r = \begin{bmatrix}
 1 & \lambda_1 & \cdots & \lambda_1^{N-1} \\
 1 & \lambda_2 & \cdots & \lambda_2^{N-1} \\
 \vdots & \vdots & \ddots & \vdots \\
