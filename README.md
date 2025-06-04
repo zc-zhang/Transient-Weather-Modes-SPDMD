@@ -7,24 +7,7 @@ Based on these weather data at hand, we can exploit data-driven computational me
 # Goal
 Extract the transient modes in twerms of warm bubble-like pattern by suing SPDMD.  
 
-The matrix \(Y\) is approximated as:
 
-\[
-Y = \begin{bmatrix}
-y_0 & y_1 & \cdots & y_{N-1}
-\end{bmatrix}
-\approx {\Phi}_r \cdot \mathrm{diag}({b}_r) \cdot {V}_r
-\]
-
-where:
-- \({\Phi}_r = \begin{bmatrix} \boldsymbol{\phi}_1 & \boldsymbol{\phi}_2 & \cdots & \boldsymbol{\phi}_r \end{bmatrix}\),
-- \(\mathrm{diag}({b}_r) = \begin{bmatrix} b_1 & & & \\ & b_2 & & \\ & & \ddots & \\ & & & b_r \end{bmatrix}\),
-- \({V}_r = \begin{bmatrix}
-1 & \lambda_1 & \cdots & \lambda_1^{N-1} \\
-1 & \lambda_2 & \cdots & \lambda_2^{N-1} \\
-\vdots & \vdots & \ddots & \vdots \\
-1 & \lambda_r & \cdots & \lambda_r^{N-1}
-\end{bmatrix}\).
 # References:
 [1] M. Jovanovic, P. Schmid, and J. Nichols, Sparsity-promoting dynamic mode decomposition, Physics of Fluids, 26, 024103 (2014).  
 Doi: https://doi.org/10.1063/1.4863670; dmdsp: https://www.ece.umn.edu/users/mihailo/software/dmdsp/  
