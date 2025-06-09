@@ -5,7 +5,7 @@ function [ KModes,KEv,KAmps,Norms,XCdmd ] = CompanionMatrix_DMD( Data )
 % "Spectral analysis of nonlinear flows" by Rowley et al., Journal of FLuid
 % Mechanics, 2009
 % "Ergodic theory, dynamic mode decomposition, and computation of spectral properties of the Koopman operator"
-%  by Hassan Arbabi and Ignor Mezic, SIADS'17
+%  by Hassan Arbabi and Ignor Mezic, SIADS'17  
 
 % inputs : 
 % Data - the data matrix: each column is a a set of measurements done at
@@ -19,9 +19,11 @@ function [ KModes,KEv,KAmps,Norms,XCdmd ] = CompanionMatrix_DMD( Data )
 % 2- KEv - Koopman or Dynamic Eigenvalues: the exponents and frequencies
 % that make up the time-varaiation of data in time
 
-% 3- Norms - Euclidean (vector) norm of each mode, used to sort the data
+% 3- KAmps- Koopman or DMD Amplitudes
 
-% 4- XCdmd - Reconstruction or superposition of the Companion DMD or KMD.
+% 4- Norms - Euclidean (vector) norm of each mode, used to sort the data
+
+% 5- XCdmd - Reconstruction or superposition of the Companion DMD or KMD.
 
 
 
@@ -60,8 +62,3 @@ XCdmd = KModes * (Vandermonde .* b);  % Element-wise multiply by amplitudes
 %XCdmd = KModes * diag(b)*Vandermonde;  % Element-wise multiply by amplitudes 
 end
 
-
-
-% UC Santa Barbara
-% arbabiha@gmail.com
-%=========================================================================%
