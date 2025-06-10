@@ -14,5 +14,5 @@ Extract the transient modes in terms of warm bubble-like pattern by SPDMD.
 Doi: https://doi.org/10.1063/1.4863670; dmdsp: https://www.ece.umn.edu/users/mihailo/software/dmdsp/  
 [2] S. Nishizawa, H. Yashiro, T. Yamaura, A. Adachi, Y. Sachiho, Y. Sato, and H. Tomita, Scalable Computing for Advanced Library and Environment (SCALE) v5. 3.6 software. 
 zenodo, 2020. RIKEN, software: https://scale.riken.jp  
-[3] Z. Zhang and Y. Susuki, Exploring SCALE Weather Data via Koopman Modes, The 67th Japan Joint Automatic Control Conference (Rengo'2024), 11J-5, pp.274-275
+[3] Z. Zhang and Y. Susuki, Exploring SCALE Weather Data via Koopman Modes, The 67th Japan Joint Automatic Control Conference (Rengo'2024), 11J-5, pp.274-275  
 Doi: https://www.jstage.jst.go.jp/article/jacc/67/0/67_274/_article/-char/en
