@@ -10,7 +10,7 @@ Extract the transient modes in terms of warm bubble-like pattern by SPDMD.
 **Supplementary Materials** (Data and Moives): https://drive.google.com/drive/folders/1aIjP4sDFhO6NG296vyf7FubWPyPo0VtE
 
 # Data
-Observables of interest: velocity magnitude ('Vfull.mat')
+Observables of interest: velocity magnitude, velocity magnitude with in scalar fields
 
 # References:
 [1] M. Jovanovic, P. Schmid, and J. Nichols, *Sparsity-promoting dynamic mode decomposition*, Physics of Fluids, 26, 024103 (2014).  
