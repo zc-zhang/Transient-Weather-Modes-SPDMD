@@ -23,11 +23,12 @@
 % relative humidity (data.QV) and precipitation (data.PREC)
 
 
-% Pdata.mat     % pressure data
-% Tdata.mat     % temperature data
-% Hdata.mat     % specific humidity or humidity ratio data
+% Pdata.mat     % pressure data- % flip
+% Tdata.mat     % temperature data- % flip
+% Hdata.mat     % specific humidity or humidity ratio data- % flip  (also see 'humidity_flow.m ')
 
 
 % datahandle0805.m   % handle data (i.e., generating the SCALE data. such as 'Pdata.mat', 'Tdata.ma', 'Hdata.mat') by YS
 % vorflow.m          % load('scaledata240805b.mat') to get 'Vfull09.mat' data
 % vorflow241202.m    % load('scaledata240805b.mat') to get 'Vfull12.mat' data
+% humidity_flow.m    % load('scaledata240805b.mat') to get  'Hdata=flip(tmpQV')'
