@@ -47,9 +47,10 @@ for i = 1:2:11
  
 
     % Plot the spatial structure
-     imagesc(data.y, data.z, reshap_mode_i); % humity
+     % imagesc(data.y, data.z, flipup(reshap_mode_i)); % humidity without flip
+     imagesc(data.y, data.z, flipud(reshap_mode_i));  % since in 'humdity_flow' and 'datahandle0805.m' use 'flip' for 'Hdata'
     colorbar; % Add colorbar for reference
-   % axis xy; % Ensure the correct orientation
+    axis xy; % Ensure the correct orientation
     xlim([0 2e4]);
     ylim([0 2e4]);
      xlabel("y");
@@ -120,7 +121,7 @@ for k = 1:numModes
     % Plot the spatial structure in the subplot
     subplot(numRows, numCols, (subplotRow - 1) * numCols + subplotCol);
     load flujet % Load the data for the plotting
-    imagesc(data.y, data.z, reshape(mode_i, [97, 40])); % Reshape and plot the spatial mode
+    imagesc(data.y, data.z, flipud(reshape(mode_i, [97, 40]))); % Reshape and plot the spatial mode
     colorbar; % Add colorbar for reference
     colormap(brighten(redblueTecplot(110), -0.35)); % Adjust colormap
     xlim([0 2e4]);
@@ -520,3 +521,34 @@ legend('Loss', '# Modes', 'Location', 'best');
 title('Accuarcy vs. Model Reduction')
 grid on;
 
+%% movie for reconstruction 
+
+
+%% Movie for reconstruction
+figure;
+gif_filename = 'KM_spdmd_humidity.25MMDDgif'; % Output GIF file name
+
+for i = 1:51
+    mode_i = abs(Hspdmd(:, i));
+    mode_i = mode_i(1:40*97);
+    reshap_mode_i = reshape(mode_i, [97, 40]);
+    imagesc(data.y, data.z, flipud(reshap_mode_i));  % note here use 'flipud'
+    %imagesc(data.y, data.z, reshap_mode_i);
+    colorbar;
+    axis xy;
+    xlim([0 2e4]);
+    ylim([0 2e4]);
+    xlabel('y');
+    ylabel('z');
+    title(['Humidity data reconstruction ', num2str(i)]);
+    colormap(brighten(redblueTecplot(21), -0.25));
+
+    frame = getframe(gcf);
+    im = frame2im(frame);
+    [imind, cm] = rgb2ind(im, 256);
+    if i == 1
+        imwrite(imind, cm, gif_filename, 'gif', 'LoopCount', Inf, 'DelayTime', 1);
+    else
+        imwrite(imind, cm, gif_filename, 'gif', 'WriteMode', 'append', 'DelayTime', 1);
+    end
+end
