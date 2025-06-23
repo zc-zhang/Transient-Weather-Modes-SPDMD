@@ -9,7 +9,8 @@ for i = 1:length(data.time)
     tmpQV = squeeze(data.QV(:,:,:,i)); % Assuming data.QV is your humidity data
     
     % Plot humidity ratio
-    imagesc(flip(tmpQV'));
+    imagesc(flip(tmpQV')); % use flip
+    %  imagesc(tmpQV);  % not use flip
     colorbar;
     colormap(brighten(redblueTecplot(21), -0.05));
     xlabel('y');
@@ -32,3 +33,8 @@ end
 
 % Close the figure (optional)
 close(fig);
+
+
+%% NOTE for Reconstructed ====
+ % here use 'flip' for 'imagesc(flip(tmpQV'))' 
+ % thus reconstruction also use 'flipud(reshap_mode_i)' in 'imagesc(data.y, data.z, flipud(reshap_mode_i))';
