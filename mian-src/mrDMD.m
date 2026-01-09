@@ -1,4 +1,9 @@
 %% mrDMD.m 
+
+% Reference; 
+% Github: https://github.com/kmanohar/multiscale-sampling-supplement/tree/master/src
+% include: mrDMD.m, mrDMD_fb.m, mrDMD_map.m
+
 function tree = mrDMD(Xraw, dt, r, max_cyc , L)
 % Inputs:
 % Xraw n by m matrix of raw data,
@@ -71,4 +76,5 @@ for j = 1:2^(l-2)
 tree {l, col} = nextlevel2 {l-1, j};
 col = col + 1;
 end
+
 end
