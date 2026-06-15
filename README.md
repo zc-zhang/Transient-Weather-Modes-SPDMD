@@ -4,6 +4,8 @@ Koopman operator theory provides the spectral analysis for the nonlinear behavio
 In weather or climate modeling, the true dynamics is usually beyond the mathematical model. However, it is always possible to measure the (short-term) time series data (e.g., SCALE weather simulation data, see: https://scale.riken.jp) .
 Based on these weather data at hand, we can exploit data-driven computational method, such as dynamic mode decomposition (DMD) and its variants (e.g., sparsity-promoting dynamic mode decomposition, SPDMD) to further study the spectrum distributions and the corresponding spatial and temporal modes.
 
+![description](Roadmap_spdmd.png)
+
 # Goal
 Extract the transient modes in terms of warm bubble-like pattern by SPDMD.  
 
