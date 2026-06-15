@@ -14,7 +14,7 @@ Extract the transient modes in terms of warm bubble-like pattern by SPDMD.
 Observables of interest: velocity magnitude, velocity magnitude with in scalar fields
 
 # Extract transient Koopman modes
-![description](https://site.com/)
+![description]([https://github.com/zc-zhang/Transient-Weather-Modes-SPDMD/blob/main/Smodes_vortex_case1.jpg)
 
 # References:
 [1] Z. Zhang, Y. Susuki, and A. Okazaki, *Extracting transient Koopman modes from short-term weather simulations with sparsity-promoting dynamic mode decomposition*, [arXiv:2506.14083](http://arxiv.org/abs/2506.14083)  
