@@ -21,7 +21,7 @@ Observables of interest: velocity magnitude, velocity magnitude with in scalar f
 # References:
 [1] Z. Zhang, Y. Susuki, and A. Okazaki, *Extracting transient Koopman modes from short-term weather simulations with sparsity-promoting dynamic mode decomposition*, pp. 1-30, IEICE NOLTA, 2026 [arXiv:2506.14083](http://arxiv.org/abs/2506.14083)  
 [2] Z. Zhang, Y. Susuki, and A. Okazaki, *Exploring SCALE Weather Data via Koopman Modes*, The 67th Japan Joint Automatic Control Conference (Rengo'24), 2024, 11J-5, pp.274-275. [J-stage](https://www.jstage.jst.go.jp/article/jacc/67/0/67_274/_article/-char/en)  
-[3] M. Jovanovic, P. Schmid, and J. Nichols, *Sparsity-promoting dynamic mode decomposition*, Physics of Fluids, 26, 024103 (2014). [Doi](https://doi.org/10.1063/1.4863670); [dmdsp](https://www.ece.umn.edu/users/mihailo/software/dmdsp/) 
+[3] M. Jovanovic, P. Schmid, and J. Nichols, *Sparsity-promoting dynamic mode decomposition*, Physics of Fluids, 26, 024103 (2014). [Doi](https://doi.org/10.1063/1.4863670); [dmdsp](https://www.ece.umn.edu/users/mihailo/software/dmdsp/)  
 [4] S. Nishizawa, H. Yashiro, T. Yamaura, A. Adachi, Y. Sachiho, Y. Sato, and H. Tomita, *Scalable Computing for Advanced Library and Environment (SCALE)* v5. 3.6 software, zenodo, 2020. RIKEN [SCALE-software](https://scale.riken.jp)  
 [5] J. N. Kutz, S. L. Brunton, B. W. Brunton, and J. L. Proctor, Dynamic mode decomposition: data-driven modeling of complex systems. SIAM, 2016   
 [6] S. L. Brunton and J. N. Kutz, Data-Driven Science and Engineering: Machine Learning, Dynamical Systems, and Control, 2022 [book-code-source](https://github.com/dynamicslab/databook_matlab?referrer=grok.com)
